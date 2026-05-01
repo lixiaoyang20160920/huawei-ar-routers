@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工业网关产品对比 - 华为AR502H vs 思科IR1101</title>
+    <title>工业网关产品对比 - 华为AR502H-V2 vs 思科IR1101</title>
     <style>
         * {
             margin: 0;
@@ -389,7 +389,7 @@
 <body>
     <header class="header">
         <h1>工业网关产品深度对比</h1>
-        <p>华为 AR502H 系列 vs 思科 IR1101 系列<br>芯片架构、硬件规格、软件能力、性能指标全面对标分析</p>
+        <p>华为 AR502H-V2 vs 思科 IR1101 系列<br>芯片架构、硬件规格、软件能力、性能指标全面对标分析</p>
     </header>
 
     <nav class="tabs">
@@ -405,13 +405,13 @@
         <div class="product-cards">
             <div class="product-card huawei">
                 <div class="product-brand">Huawei</div>
-                <div class="product-name">AR502H / AR502H-V2</div>
+                <div class="product-name">AR502H-V2</div>
                 <span class="product-tag">工业物联网网关</span>
                 <p class="product-desc">面向工业物联网场景的高性能边缘网关，支持多协议接入和边缘计算</p>
                 <ul class="product-specs">
-                    <li><span class="spec-label">处理器</span><span class="spec-value">ARM Cortex-A53 四核</span></li>
-                    <li><span class="spec-label">内存</span><span class="spec-value">1GB DDR3</span></li>
-                    <li><span class="spec-label">存储</span><span class="spec-value">4GB eMMC + MicroSD</span></li>
+                    <li><span class="spec-label">处理器</span><span class="spec-value">ARM Cortex-A55 四核 @ 1.6GHz</span></li>
+                    <li><span class="spec-label">内存</span><span class="spec-value">4GB DDR4</span></li>
+                    <li><span class="spec-label">存储</span><span class="spec-value">2GB SLC NAND + M.2 NVME (最大256GB)</span></li>
                     <li><span class="spec-label">工作温度</span><span class="spec-value">-40°C ~ 70°C</span></li>
                     <li><span class="spec-label">防护等级</span><span class="spec-value">IP40</span></li>
                     <li><span class="spec-label">5G支持</span><span class="spec-value">可选配</span></li>
@@ -461,7 +461,7 @@
                 <thead>
                     <tr>
                         <th>对比项</th>
-                        <th>华为 AR502H</th>
+                        <th>华为 AR502H-V2</th>
                         <th>思科 IR1101</th>
                         <th>对比分析</th>
                     </tr>
@@ -472,9 +472,9 @@
                     </tr>
                     <tr>
                         <td>CPU</td>
-                        <td class="winner">ARM Cortex-A53 四核 @ 1.2GHz</td>
+                        <td class="winner">ARM Cortex-A55 四核 @ 1.6GHz</td>
                         <td>ARM Cortex-A9 双核 @ 1.0GHz</td>
-                        <td>华为领先一代，A53 vs A9，四核 vs 双核</td>
+                        <td>华为领先两代，A55 vs A9，四核 vs 双核</td>
                     </tr>
                     <tr>
                         <td>制程工艺</td>
@@ -493,15 +493,15 @@
                     </tr>
                     <tr>
                         <td>内存容量</td>
-                        <td class="winner">1GB DDR3</td>
+                        <td class="winner">4GB DDR4</td>
                         <td>512MB DDR3</td>
-                        <td>华为内存翻倍，支持更复杂应用</td>
+                        <td>华为内存是思科的 8 倍，DDR4 更先进</td>
                     </tr>
                     <tr>
                         <td>存储容量</td>
-                        <td>4GB eMMC</td>
+                        <td class="winner">2GB SLC NAND + M.2 NVME(最大256GB)</td>
                         <td>4GB Flash</td>
-                        <td>相当，均支持扩展</td>
+                        <td>华为支持 NVME SSD 扩展，存储性能更强</td>
                     </tr>
                     <tr>
                         <td>扩展存储</td>
@@ -514,9 +514,9 @@
                     </tr>
                     <tr>
                         <td>串口</td>
-                        <td class="winner">2×RS232 + 2×RS485</td>
+                        <td class="winner">2×RS485/RS232（软件切换）</td>
                         <td>1×RS232 + 1×RS485</td>
-                        <td>华为串口更多，适合多设备接入</td>
+                        <td>华为串口更多且可软件配置</td>
                     </tr>
                     <tr>
                         <td>DI/DO</td>
@@ -526,9 +526,9 @@
                     </tr>
                     <tr>
                         <td>以太网口</td>
+                        <td class="winner">4×GE + 2×10GE SFP+</td>
                         <td>2×GE</td>
-                        <td>2×GE</td>
-                        <td>相当</td>
+                        <td>华为多 2 个 GE 和 2 个 10GE 光口</td>
                     </tr>
                     <tr>
                         <td>USB</td>
@@ -554,9 +554,9 @@
                 <tbody>
                     <tr>
                         <td>工作温度</td>
-                        <td class="winner">-40°C ~ 70°C</td>
+                        <td class="winner">-40°C ~ 75°C</td>
                         <td>-40°C ~ 60°C</td>
-                        <td>华为高温耐受更好</td>
+                        <td>华为高温耐受更好（高 15°C）</td>
                     </tr>
                     <tr>
                         <td>防护等级</td>
@@ -607,7 +607,7 @@
                 <thead>
                     <tr>
                         <th>对比项</th>
-                        <th>华为 AR502H</th>
+                        <th>华为 AR502H-V2</th>
                         <th>思科 IR1101</th>
                         <th>对比分析</th>
                     </tr>
@@ -747,7 +747,7 @@
                 <thead>
                     <tr>
                         <th>指标</th>
-                        <th>华为 AR502H</th>
+                        <th>华为 AR502H-V2</th>
                         <th>思科 IR1101</th>
                         <th>差异分析</th>
                     </tr>
@@ -816,7 +816,7 @@
     <div id="analysis" class="tab-content">
         <div class="analysis-grid">
             <div class="analysis-card huawei">
-                <h3>华为 AR502H 优势</h3>
+                <h3>华为 AR502H-V2 优势</h3>
                 <ul class="analysis-list">
                     <li class="advantage">
                         <span class="analysis-icon">✓</span>
@@ -857,7 +857,7 @@
             </div>
             
             <div class="analysis-card huawei">
-                <h3>华为 AR502H 劣势</h3>
+                <h3>华为 AR502H-V2 劣势</h3>
                 <ul class="analysis-list">
                     <li class="disadvantage">
                         <span class="analysis-icon">✗</span>
