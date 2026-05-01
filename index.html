@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华为AR路由器 - 企业网络首选</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+        }
+        
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header .tagline {
+            margin-top: 30px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+        }
+        
+        /* 核心优势 */
+        .advantages {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #1a1a1a;
+        }
+        
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .adv-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .adv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .adv-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .adv-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .adv-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        /* 产品系列 */
+        .products {
+            background: white;
+            padding: 60px 20px;
+        }
+        
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-category {
+            margin-bottom: 60px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ff0000;
+        }
+        
+        .category-header h3 {
+            font-size: 28px;
+            color: #1a1a1a;
+        }
+        
+        .category-tag {
+            background: #ff0000;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-left: 15px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%);
+        }
+        
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+        
+        .product-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .product-badge {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .product-desc {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .product-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .spec-tag {
+            background: #f0f2f5;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #444;
+        }
+        
+        .product-highlights {
+            list-style: none;
+        }
+        
+        .product-highlights li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 14px;
+            color: #444;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .product-highlights li:last-child {
+            border-bottom: none;
+        }
+        
+        .product-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        /* 应用场景 */
+        .scenarios {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+        
+        .scenarios-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .scenarios .section-title {
+            color: white;
+        }
+        
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .scenario-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .scenario-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.02);
+        }
+        
+        .scenario-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .scenario-card h4 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .scenario-card p {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #ff0000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* 页脚 */
+        .footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .category-tag {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <h1>华为 AR 路由器</h1>
+        <p>全球领先的 enterprise 接入解决方案，连续 15 年中国市场份额第一<br>
+        为中小企业到大型集团提供全场景网络覆盖</p>
+        <div class="tagline">可靠 · 安全 · 智能 · 易维</div>
+    </header>
+
+    <!-- 核心优势 -->
+    <section class="advantages">
+        <h2 class="section-title">为什么选择华为 AR 路由器？</h2>
+        <div class="adv-grid">
+            <div class="adv-card">
+                <div class="adv-icon">🚀</div>
+                <h3>极致性能</h3>
+                <p>多核 CPU + 硬件加速，转发性能提升 300%<br>
+                支持 10Gbps+ 大带宽接入</p>
+            </div>
+            <div class="adv-card">
+                <div class="adv-icon">🛡️</div>
+                <h3>原生安全</h3>
+                <p>内置 IPS/AV/URL 过滤，AI 威胁检测<br>
+                零信任架构，端到端加密</p>
+            </div>
+            <div class="adv-card">
+                <div class="adv-icon">☁️</div>
+                <h3>云化管理</h3>
+                <p>支持华为 iMaster NCE/Agile Controller<br>
+                零配置上线，远程运维</p>
+            </div>
+            <div class="adv-card">
+                <div class="adv-icon">🔌</div>
+                <h3>丰富接口</h3>
+                <p>GE/10GE/25GE/40GE/100GE 全接口类型<br>
+                5G、Wi-Fi 6、LTE 全制式接入</p>
+            </div>
+            <div class="adv-card">
+                <div class="adv-icon">💡</div>
+                <h3>智能运维</h3>
+                <p>Telemetry 毫秒级可视化<br>
+                AI 故障预测，主动优化</p>
+            </div>
+            <div class="adv-card">
+                <div class="adv-icon">🌐</div>
+                <h3>融合网络</h3>
+                <p>路由、交换、安全、无线 All-in-One<br>
+                SD-WAN 智能选路，成本降低 50%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品系列 -->
+    <section class="products">
+        <div class="products-container">
+            <h2 class="section-title">产品系列一览</h2>
+
+            <!-- 高端企业级 -->
+            <div class="product-category">
+                <div class="category-header">
+                    <h3>🏢 高端企业级</h3>
+                    <span class="category-tag">总部/数据中心</span>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <span class="product-name">AR6000 系列</span>
+                            <span class="product-badge">旗舰</span>
+                        </div>
+                        <p class="product-desc">面向大型企业总部、数据中心的高端路由器</p>
+                        <div class="product-specs">
+                            <span class="spec-tag">100G 接口</span>
+                            <span class="spec-tag">400G 转发</span>
+                            <span class="spec-tag">双主控</span>
+                        </div>
+                        <ul class="product-highlights">
+                            <li>业界首款 100G 企业接入路由器</li>
+                            <li>支持 SRv6/Segment Routing</li>
+                            <li>内置高级安全功能（FW/IPS/AV）</li>
+                            <li>99.999% 电信级可靠性</li>
+                            <li>支持 10K+ IPSec VPN 隧道</li>
+                        </ul>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-header">
+                            <span class="product-name">AR6280/AR6300</span>
+                            <span class="product-badge">主推</span>
+                        </div>
+                        <p class="product-desc">大型企业汇聚、中型数据中心首选</p>
+                        <div class="product-specs">
+                            <span class="spec-tag">25G/40G 接口</span>
+                            <span class="spec-tag">200G 转发</span>
+                            <span class="spec-tag">模块化</span>
+                        </div>
+                        <ul class="product-highlights">
+                            <li>弹性扩展，业务板按需配置</li>
+                            <li>SD-WAN 智能选路与优化</li>
+                            <li>多链路负载均衡与备份</li>
+                            <li>AI 驱动的应用识别与调度</li>
+                            <li>云网协同，一跳入云</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中型分支 -->
+            <div class="product-category">
+                <div class="category-header">
+                    <h3>🏪 中型分支</h3>
+                    <span class="category-tag">区域中心/大型分支</span>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <span class="product-name">AR6140/AR6160</span>
+                            <span class="product-badge">热销</span>
+                        </div>
+                        <p class="product-desc">区域总部、大型分支机构一体化网关</p>
+                        <div class="product-specs">
+                            <span class="spec-tag">10GE 接口</span>
+                            <span class="spec-tag">40G 转发</span>
+                            <span class="spec-tag">PoE++</span>
+                        </div>
+                        <ul class="product-highlights">
+                            <li>All-in-One：路由+交换+无线+安全</li>
+                            <li>支持 4K IPSec VPN，加密不降速</li>
+                            <li>PoE++ 供电，直接接 AP/摄像头</li>
+                            <li>内置 AC，可管理 512 AP</li>
+                            <li>零配置部署，即插即用</li>
+                        </ul>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-header">
+                            <span class="product-name">AR6120/AR6121</span>
+                            <span class="product-badge">性价比</span>
+                        </div>
+                        <p class="product-desc">中型企业、连锁门店高性价比选择</p>
+                        <div class="product-specs">
+                            <span class="spec-tag">GE/10GE 接口</span>
+                            <span class="spec-tag">20G 转发</span>
+                            <span class="spec-tag">紧凑设计</span>
+                        </div>
+                        <ul class="product-highlights">
+                            <li>1U 紧凑设计，桌面/机架两用</li>
+                            <li>双 WAN 口，链路自动切换</li>
+                            <li>内置 4G/5G 模块，备份无忧</li>
+                            <li>支持 SIP 语音，一键开电话</li>
+                            <li>Web 图形化管理，免培训上手</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 小型分支 -->
+            <div class="product-category">
+                <div class="category-header">
+                    <h3>🏠 小型分支</h3>
+                    <span class="category-tag">SMB/门店/办公室</span>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <span class="product-name">AR651/AR651C</span>
+                            <span class="product-badge">入门</span>
+                        </div>
+                        <p class="product-desc">小微企业、SOHO 办公首选</p>
+                        <div class="product-specs">
+                            <span class="spec-tag">GE 接口</span>
+                            <span class="spec-tag">5Gbps 转发</span>
+                            <span class="spec-tag">无风扇</span>
+                        </div>
+                        <ul class="product-highlights">
+                            <li>无风扇静音设计，办公无干扰</li>
+                            <li>支持 4G LTE 插卡上网</li>
+                            <li>Wi-Fi 6 可选，最高 3Gbps</li>
+                            <li>微信扫码开局，3 分钟上线</li>
+                            <li>支持华为云管理，远程运维</li>
+                        </ul>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-header">
+                            <span class="product-name">AR611W/AR612W</span>
+                            <span class="product-badge">无线</span>
+                        </div>
+                        <p class="product-desc">无线一体化，简化部署</p>
+                        <div class="product-specs">
+                            <span class="spec-tag">Wi-Fi 6</span>
+                            <span class="spec-tag">4G LTE</span>
+                            <span class="spec-tag">桌面式</span>
+                        </div>
+                        <ul class="product-highlights">
+                            <li>内置 Wi-Fi 6，覆盖 200㎡</li>
+                            <li>支持 256 用户并发</li>
+                            <li>4G 插卡，断电不断网</li>
+                            <li>USB 口支持文件共享/打印</li>
+                            <li>APP 管理，随时随地看网络</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工业级 -->
+            <div class="product-category">
+                <div class="category-header">
+                    <h3>🏭 工业级</h3>
+                    <span class="category-tag">户外/恶劣环境</span>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <span class="product-name">AR502H/AR509</span>
+                            <span class="product-badge">工业</span>
+                        </div>
+                        <p class="product-desc">工业物联网、户外场景专用</p>
+                        <div class="product-specs">
+                            <span class="spec-tag">-40℃~70℃</span>
+                            <span class="spec-tag">IP40 防护</span>
+                            <span class="spec-tag">DIN 导轨</span>
+                        </div>
+                        <ul class="product-highlights">
+                            <li>工业级宽温设计，恶劣环境稳定运行</li>
+                            <li>支持 5G/4G，户外远程接入</li>
+                            <li>RS232/RS485 串口，接 PLC/传感器</li>
+                            <li>IPSec/GRE 工业 VPN，安全回传</li>
+                            <li>DIN 导轨安装，机柜快速部署</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="scenarios">
+        <div class="scenarios-container">
+            <h2 class="section-title">全场景覆盖</h2>
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-icon">🏦</div>
+                    <h4>金融网点</h4>
+                    <p>高可靠双链路备份<br>合规安全加密传输<br>智能流量调度</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon">🏪</div>
+                    <h4>连锁零售</h4>
+                    <p>千店统一管控<br>零配置批量部署<br>云化集中运维</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon">🏥</div>
+                    <h4>医疗院所</h4>
+                    <p>医疗设备接入<br>隔离安全域<br>远程诊疗支持</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon">🏫</div>
+                    <h4>教育校园</h4>
+                    <p>师生上网管理<br>带宽公平调度<br>内容过滤审计</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon">🏭</div>
+                    <h4>智能制造</h4>
+                    <p>工业协议转换<br>边缘计算下沉<br>OT/IT 融合</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon">🚗</div>
+                    <h4>车载移动</h4>
+                    <p>5G 高速漫游<br>车载环境抗震<br>GPS 定位追踪</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>开启智能网络新时代</h2>
+        <p>联系华为专家，获取专属方案和优惠报价</p>
+        <a href="#" class="cta-button">立即咨询</a>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>华为 AR 路由器 | 企业网络首选</p>
+        <p>© 2025 Huawei Technologies Co., Ltd. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
