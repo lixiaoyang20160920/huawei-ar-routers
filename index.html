@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华为AR路由器 - 企业网络首选</title>
+    <title>工业网关产品对比 - 华为AR502H vs 思科IR1101</title>
     <style>
         * {
             margin: 0;
@@ -13,140 +13,81 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: #333;
             background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
         }
         
-        /* 头部 */
         .header {
-            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
             padding: 60px 20px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 42px;
+            margin-bottom: 15px;
             font-weight: 700;
         }
         
         .header p {
-            font-size: 20px;
-            opacity: 0.95;
+            font-size: 18px;
+            opacity: 0.9;
             max-width: 800px;
             margin: 0 auto;
         }
         
-        .header .tagline {
-            margin-top: 30px;
-            font-size: 16px;
-            background: rgba(255,255,255,0.15);
-            display: inline-block;
-            padding: 10px 30px;
-            border-radius: 30px;
-        }
-        
-        /* 核心优势 */
-        .advantages {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: #1a1a1a;
-        }
-        
-        .adv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .adv-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .adv-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-        
-        .adv-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .adv-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-        }
-        
-        .adv-card p {
-            color: #666;
-            font-size: 15px;
-            line-height: 1.8;
-        }
-        
-        /* 产品系列 */
-        .products {
-            background: white;
-            padding: 60px 20px;
-        }
-        
-        .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .product-category {
-            margin-bottom: 60px;
-        }
-        
-        .category-header {
+        .tabs {
             display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #ff0000;
+            justify-content: center;
+            background: white;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 20px;
         }
         
-        .category-header h3 {
-            font-size: 28px;
-            color: #1a1a1a;
+        .tab {
+            padding: 20px 40px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
         }
         
-        .category-tag {
-            background: #ff0000;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-left: 15px;
+        .tab:hover {
+            color: #ff0000;
         }
         
-        .product-grid {
+        .tab.active {
+            color: #ff0000;
+            border-bottom-color: #ff0000;
+        }
+        
+        .tab-content {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* 产品卡片 */
+        .product-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
         }
         
         .product-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-            border: 1px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             position: relative;
             overflow: hidden;
         }
@@ -156,487 +97,901 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%);
+            right: 0;
+            height: 4px;
         }
         
-        .product-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 20px;
+        .product-card.huawei::before {
+            background: linear-gradient(90deg, #ff0000, #cc0000);
         }
+        
+        .product-card.cisco::before {
+            background: linear-gradient(90deg, #049fd9, #005073);
+        }
+        
+        .product-card.future::before {
+            background: linear-gradient(90deg, #ee3524, #b91c1c);
+        }
+        
+        .product-brand {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .product-card.huawei .product-brand { color: #ff0000; }
+        .product-card.cisco .product-brand { color: #049fd9; }
+        .product-card.future .product-brand { color: #ee3524; }
         
         .product-name {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
+            margin-bottom: 15px;
             color: #1a1a1a;
         }
         
-        .product-badge {
-            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 6px;
+        .product-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .product-card.huawei .product-tag {
+            background: #fff0f0;
+            color: #ff0000;
+        }
+        
+        .product-card.cisco .product-tag {
+            background: #e6f7ff;
+            color: #049fd9;
+        }
+        
+        .product-card.future .product-tag {
+            background: #fef2f2;
+            color: #ee3524;
         }
         
         .product-desc {
             color: #666;
-            margin-bottom: 20px;
             font-size: 15px;
+            margin-bottom: 25px;
         }
         
         .product-specs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .spec-tag {
-            background: #f0f2f5;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #444;
-        }
-        
-        .product-highlights {
             list-style: none;
         }
         
-        .product-highlights li {
-            padding: 8px 0;
-            padding-left: 24px;
-            position: relative;
-            font-size: 14px;
-            color: #444;
+        .product-specs li {
+            padding: 12px 0;
             border-bottom: 1px dashed #eee;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
         }
         
-        .product-highlights li:last-child {
+        .product-specs li:last-child {
             border-bottom: none;
         }
         
-        .product-highlights li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #ff0000;
-            font-weight: bold;
+        .spec-label {
+            color: #888;
         }
         
-        /* 应用场景 */
-        .scenarios {
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
+        .spec-value {
+            font-weight: 600;
+            color: #333;
         }
         
-        .scenarios-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* 对比表格 */
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
         }
         
-        .scenarios .section-title {
-            color: white;
+        .comparison-table h3 {
+            padding: 25px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 20px;
         }
         
-        .scenario-grid {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 18px 25px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        th {
+            background: #fafbfc;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            font-size: 15px;
+        }
+        
+        tr:hover {
+            background: #fafbfc;
+        }
+        
+        .winner {
+            background: #f0fff4;
+            font-weight: 600;
+            color: #16a34a;
+        }
+        
+        .winner::after {
+            content: ' ★';
+            color: #16a34a;
+        }
+        
+        .section-header {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        /* 优劣势分析 */
+        .analysis-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
         
-        .scenario-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+        .analysis-card {
+            background: white;
             border-radius: 16px;
-            padding: 35px 25px;
-            text-align: center;
-            transition: all 0.3s;
+            padding: 35px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
-        .scenario-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: scale(1.02);
+        .analysis-card h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
         }
         
-        .scenario-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
+        .analysis-card.huawei h3 {
+            border-color: #ff0000;
+            color: #ff0000;
         }
         
-        .scenario-card h4 {
+        .analysis-card.cisco h3 {
+            border-color: #049fd9;
+            color: #049fd9;
+        }
+        
+        .analysis-list {
+            list-style: none;
+        }
+        
+        .analysis-list li {
+            padding: 15px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .analysis-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .analysis-icon {
             font-size: 20px;
-            margin-bottom: 12px;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
         
-        .scenario-card p {
+        .advantage .analysis-icon { color: #16a34a; }
+        .disadvantage .analysis-icon { color: #dc2626; }
+        
+        .analysis-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+        
+        .analysis-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* 总结 */
+        .summary {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 16px;
+            margin-top: 50px;
+        }
+        
+        .summary h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .summary-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+        }
+        
+        .summary-item h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .summary-item p {
             font-size: 14px;
             opacity: 0.8;
             line-height: 1.7;
         }
         
-        /* CTA */
-        .cta {
-            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-            padding: 80px 20px;
+        /* Fortinet 占位 */
+        .placeholder-notice {
+            background: #fef3c7;
+            border: 2px dashed #f59e0b;
+            border-radius: 12px;
+            padding: 30px;
             text-align: center;
-            color: white;
+            margin-bottom: 40px;
         }
         
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+        .placeholder-notice h4 {
+            color: #92400e;
+            margin-bottom: 10px;
         }
         
-        .cta p {
-            font-size: 18px;
-            opacity: 0.95;
-            margin-bottom: 30px;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #ff0000;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        /* 页脚 */
-        .footer {
-            background: #1a1a1a;
-            color: #999;
-            padding: 40px 20px;
-            text-align: center;
+        .placeholder-notice p {
+            color: #a16207;
             font-size: 14px;
         }
         
-        /* 响应式 */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 32px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .product-grid {
+        @media (max-width: 1200px) {
+            .product-cards {
                 grid-template-columns: 1fr;
             }
-            
-            .category-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .analysis-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .category-tag {
-                margin-left: 0;
-                margin-top: 10px;
+            .summary-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 头部 -->
     <header class="header">
-        <h1>华为 AR 路由器</h1>
-        <p>全球领先的 enterprise 接入解决方案，连续 15 年中国市场份额第一<br>
-        为中小企业到大型集团提供全场景网络覆盖</p>
-        <div class="tagline">可靠 · 安全 · 智能 · 易维</div>
+        <h1>工业网关产品深度对比</h1>
+        <p>华为 AR502H 系列 vs 思科 IR1101 系列<br>芯片架构、硬件规格、软件能力、性能指标全面对标分析</p>
     </header>
 
-    <!-- 核心优势 -->
-    <section class="advantages">
-        <h2 class="section-title">为什么选择华为 AR 路由器？</h2>
-        <div class="adv-grid">
-            <div class="adv-card">
-                <div class="adv-icon">🚀</div>
-                <h3>极致性能</h3>
-                <p>多核 CPU + 硬件加速，转发性能提升 300%<br>
-                支持 10Gbps+ 大带宽接入</p>
+    <nav class="tabs">
+        <div class="tab active" onclick="showTab('overview')">产品概览</div>
+        <div class="tab" onclick="showTab('hardware')">硬件对比</div>
+        <div class="tab" onclick="showTab('software')">软件对比</div>
+        <div class="tab" onclick="showTab('performance')">性能对比</div>
+        <div class="tab" onclick="showTab('analysis')">优劣势分析</div>
+    </nav>
+
+    <!-- 产品概览 -->
+    <div id="overview" class="tab-content active">
+        <div class="product-cards">
+            <div class="product-card huawei">
+                <div class="product-brand">Huawei</div>
+                <div class="product-name">AR502H / AR502H-V2</div>
+                <span class="product-tag">工业物联网网关</span>
+                <p class="product-desc">面向工业物联网场景的高性能边缘网关，支持多协议接入和边缘计算</p>
+                <ul class="product-specs">
+                    <li><span class="spec-label">处理器</span><span class="spec-value">ARM Cortex-A53 四核</span></li>
+                    <li><span class="spec-label">内存</span><span class="spec-value">1GB DDR3</span></li>
+                    <li><span class="spec-label">存储</span><span class="spec-value">4GB eMMC + MicroSD</span></li>
+                    <li><span class="spec-label">工作温度</span><span class="spec-value">-40°C ~ 70°C</span></li>
+                    <li><span class="spec-label">防护等级</span><span class="spec-value">IP40</span></li>
+                    <li><span class="spec-label">5G支持</span><span class="spec-value">可选配</span></li>
+                    <li><span class="spec-label">边缘计算</span><span class="spec-value">容器/函数计算</span></li>
+                </ul>
             </div>
-            <div class="adv-card">
-                <div class="adv-icon">🛡️</div>
-                <h3>原生安全</h3>
-                <p>内置 IPS/AV/URL 过滤，AI 威胁检测<br>
-                零信任架构，端到端加密</p>
+            
+            <div class="product-card cisco">
+                <div class="product-brand">Cisco</div>
+                <div class="product-name">IR1101 / IR1101-K9</div>
+                <span class="product-tag">工业集成服务路由器</span>
+                <p class="product-desc">思科工业路由器系列，主打安全性和企业级可靠性</p>
+                <ul class="product-specs">
+                    <li><span class="spec-label">处理器</span><span class="spec-value">ARM Cortex-A9 双核</span></li>
+                    <li><span class="spec-label">内存</span><span class="spec-value">512MB DDR3</span></li>
+                    <li><span class="spec-label">存储</span><span class="spec-value">4GB Flash</span></li>
+                    <li><span class="spec-label">工作温度</span><span class="spec-value">-40°C ~ 60°C</span></li>
+                    <li><span class="spec-label">防护等级</span><span class="spec-value">IP30</span></li>
+                    <li><span class="spec-label">5G支持</span><span class="spec-value">可选配</span></li>
+                    <li><span class="spec-label">边缘计算</span><span class="spec-value">容器有限支持</span></li>
+                </ul>
             </div>
-            <div class="adv-card">
-                <div class="adv-icon">☁️</div>
-                <h3>云化管理</h3>
-                <p>支持华为 iMaster NCE/Agile Controller<br>
-                零配置上线，远程运维</p>
-            </div>
-            <div class="adv-card">
-                <div class="adv-icon">🔌</div>
-                <h3>丰富接口</h3>
-                <p>GE/10GE/25GE/40GE/100GE 全接口类型<br>
-                5G、Wi-Fi 6、LTE 全制式接入</p>
-            </div>
-            <div class="adv-card">
-                <div class="adv-icon">💡</div>
-                <h3>智能运维</h3>
-                <p>Telemetry 毫秒级可视化<br>
-                AI 故障预测，主动优化</p>
-            </div>
-            <div class="adv-card">
-                <div class="adv-icon">🌐</div>
-                <h3>融合网络</h3>
-                <p>路由、交换、安全、无线 All-in-One<br>
-                SD-WAN 智能选路，成本降低 50%</p>
+            
+            <div class="product-card future">
+                <div class="product-brand">Fortinet</div>
+                <div class="product-name">待定</div>
+                <span class="product-tag">工业安全网关</span>
+                <p class="product-desc">Fortinet 工业网关产品待补充（FortiGate Rugged 系列或 FortiExtender）</p>
+                <ul class="product-specs">
+                    <li><span class="spec-label">处理器</span><span class="spec-value">待定</span></li>
+                    <li><span class="spec-label">内存</span><span class="spec-value">待定</span></li>
+                    <li><span class="spec-label">存储</span><span class="spec-value">待定</span></li>
+                    <li><span class="spec-label">工作温度</span><span class="spec-value">待定</span></li>
+                    <li><span class="spec-label">防护等级</span><span class="spec-value">待定</span></li>
+                    <li><span class="spec-label">5G支持</span><span class="spec-value">待定</span></li>
+                    <li><span class="spec-label">边缘计算</span><span class="spec-value">待定</span></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- 产品系列 -->
-    <section class="products">
-        <div class="products-container">
-            <h2 class="section-title">产品系列一览</h2>
-
-            <!-- 高端企业级 -->
-            <div class="product-category">
-                <div class="category-header">
-                    <h3>🏢 高端企业级</h3>
-                    <span class="category-tag">总部/数据中心</span>
-                </div>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <span class="product-name">AR6000 系列</span>
-                            <span class="product-badge">旗舰</span>
-                        </div>
-                        <p class="product-desc">面向大型企业总部、数据中心的高端路由器</p>
-                        <div class="product-specs">
-                            <span class="spec-tag">100G 接口</span>
-                            <span class="spec-tag">400G 转发</span>
-                            <span class="spec-tag">双主控</span>
-                        </div>
-                        <ul class="product-highlights">
-                            <li>业界首款 100G 企业接入路由器</li>
-                            <li>支持 SRv6/Segment Routing</li>
-                            <li>内置高级安全功能（FW/IPS/AV）</li>
-                            <li>99.999% 电信级可靠性</li>
-                            <li>支持 10K+ IPSec VPN 隧道</li>
-                        </ul>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-header">
-                            <span class="product-name">AR6280/AR6300</span>
-                            <span class="product-badge">主推</span>
-                        </div>
-                        <p class="product-desc">大型企业汇聚、中型数据中心首选</p>
-                        <div class="product-specs">
-                            <span class="spec-tag">25G/40G 接口</span>
-                            <span class="spec-tag">200G 转发</span>
-                            <span class="spec-tag">模块化</span>
-                        </div>
-                        <ul class="product-highlights">
-                            <li>弹性扩展，业务板按需配置</li>
-                            <li>SD-WAN 智能选路与优化</li>
-                            <li>多链路负载均衡与备份</li>
-                            <li>AI 驱动的应用识别与调度</li>
-                            <li>云网协同，一跳入云</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 中型分支 -->
-            <div class="product-category">
-                <div class="category-header">
-                    <h3>🏪 中型分支</h3>
-                    <span class="category-tag">区域中心/大型分支</span>
-                </div>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <span class="product-name">AR6140/AR6160</span>
-                            <span class="product-badge">热销</span>
-                        </div>
-                        <p class="product-desc">区域总部、大型分支机构一体化网关</p>
-                        <div class="product-specs">
-                            <span class="spec-tag">10GE 接口</span>
-                            <span class="spec-tag">40G 转发</span>
-                            <span class="spec-tag">PoE++</span>
-                        </div>
-                        <ul class="product-highlights">
-                            <li>All-in-One：路由+交换+无线+安全</li>
-                            <li>支持 4K IPSec VPN，加密不降速</li>
-                            <li>PoE++ 供电，直接接 AP/摄像头</li>
-                            <li>内置 AC，可管理 512 AP</li>
-                            <li>零配置部署，即插即用</li>
-                        </ul>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-header">
-                            <span class="product-name">AR6120/AR6121</span>
-                            <span class="product-badge">性价比</span>
-                        </div>
-                        <p class="product-desc">中型企业、连锁门店高性价比选择</p>
-                        <div class="product-specs">
-                            <span class="spec-tag">GE/10GE 接口</span>
-                            <span class="spec-tag">20G 转发</span>
-                            <span class="spec-tag">紧凑设计</span>
-                        </div>
-                        <ul class="product-highlights">
-                            <li>1U 紧凑设计，桌面/机架两用</li>
-                            <li>双 WAN 口，链路自动切换</li>
-                            <li>内置 4G/5G 模块，备份无忧</li>
-                            <li>支持 SIP 语音，一键开电话</li>
-                            <li>Web 图形化管理，免培训上手</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 小型分支 -->
-            <div class="product-category">
-                <div class="category-header">
-                    <h3>🏠 小型分支</h3>
-                    <span class="category-tag">SMB/门店/办公室</span>
-                </div>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <span class="product-name">AR651/AR651C</span>
-                            <span class="product-badge">入门</span>
-                        </div>
-                        <p class="product-desc">小微企业、SOHO 办公首选</p>
-                        <div class="product-specs">
-                            <span class="spec-tag">GE 接口</span>
-                            <span class="spec-tag">5Gbps 转发</span>
-                            <span class="spec-tag">无风扇</span>
-                        </div>
-                        <ul class="product-highlights">
-                            <li>无风扇静音设计，办公无干扰</li>
-                            <li>支持 4G LTE 插卡上网</li>
-                            <li>Wi-Fi 6 可选，最高 3Gbps</li>
-                            <li>微信扫码开局，3 分钟上线</li>
-                            <li>支持华为云管理，远程运维</li>
-                        </ul>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-header">
-                            <span class="product-name">AR611W/AR612W</span>
-                            <span class="product-badge">无线</span>
-                        </div>
-                        <p class="product-desc">无线一体化，简化部署</p>
-                        <div class="product-specs">
-                            <span class="spec-tag">Wi-Fi 6</span>
-                            <span class="spec-tag">4G LTE</span>
-                            <span class="spec-tag">桌面式</span>
-                        </div>
-                        <ul class="product-highlights">
-                            <li>内置 Wi-Fi 6，覆盖 200㎡</li>
-                            <li>支持 256 用户并发</li>
-                            <li>4G 插卡，断电不断网</li>
-                            <li>USB 口支持文件共享/打印</li>
-                            <li>APP 管理，随时随地看网络</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 工业级 -->
-            <div class="product-category">
-                <div class="category-header">
-                    <h3>🏭 工业级</h3>
-                    <span class="category-tag">户外/恶劣环境</span>
-                </div>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <span class="product-name">AR502H/AR509</span>
-                            <span class="product-badge">工业</span>
-                        </div>
-                        <p class="product-desc">工业物联网、户外场景专用</p>
-                        <div class="product-specs">
-                            <span class="spec-tag">-40℃~70℃</span>
-                            <span class="spec-tag">IP40 防护</span>
-                            <span class="spec-tag">DIN 导轨</span>
-                        </div>
-                        <ul class="product-highlights">
-                            <li>工业级宽温设计，恶劣环境稳定运行</li>
-                            <li>支持 5G/4G，户外远程接入</li>
-                            <li>RS232/RS485 串口，接 PLC/传感器</li>
-                            <li>IPSec/GRE 工业 VPN，安全回传</li>
-                            <li>DIN 导轨安装，机柜快速部署</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+    <!-- 硬件对比 -->
+    <div id="hardware" class="tab-content">
+        <div class="comparison-table">
+            <h3>🔧 芯片与硬件架构对比</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>对比项</th>
+                        <th>华为 AR502H</th>
+                        <th>思科 IR1101</th>
+                        <th>对比分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="section-header">
+                        <td colspan="4">处理器架构</td>
+                    </tr>
+                    <tr>
+                        <td>CPU</td>
+                        <td class="winner">ARM Cortex-A53 四核 @ 1.2GHz</td>
+                        <td>ARM Cortex-A9 双核 @ 1.0GHz</td>
+                        <td>华为领先一代，A53 vs A9，四核 vs 双核</td>
+                    </tr>
+                    <tr>
+                        <td>制程工艺</td>
+                        <td class="winner">28nm</td>
+                        <td>40nm</td>
+                        <td>华为制程更先进，功耗更低</td>
+                    </tr>
+                    <tr>
+                        <td>AI加速</td>
+                        <td class="winner">内置 NPU（可选）</td>
+                        <td>无</td>
+                        <td>华为支持边缘AI推理</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td colspan="4">内存与存储</td>
+                    </tr>
+                    <tr>
+                        <td>内存容量</td>
+                        <td class="winner">1GB DDR3</td>
+                        <td>512MB DDR3</td>
+                        <td>华为内存翻倍，支持更复杂应用</td>
+                    </tr>
+                    <tr>
+                        <td>存储容量</td>
+                        <td>4GB eMMC</td>
+                        <td>4GB Flash</td>
+                        <td>相当，均支持扩展</td>
+                    </tr>
+                    <tr>
+                        <td>扩展存储</td>
+                        <td class="winner">MicroSD 最大 128GB</td>
+                        <td>USB 外接存储</td>
+                        <td>华为内置扩展更便捷</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td colspan="4">工业接口</td>
+                    </tr>
+                    <tr>
+                        <td>串口</td>
+                        <td class="winner">2×RS232 + 2×RS485</td>
+                        <td>1×RS232 + 1×RS485</td>
+                        <td>华为串口更多，适合多设备接入</td>
+                    </tr>
+                    <tr>
+                        <td>DI/DO</td>
+                        <td class="winner">4×DI + 2×DO</td>
+                        <td>2×DI + 2×DO</td>
+                        <td>华为数字输入更多</td>
+                    </tr>
+                    <tr>
+                        <td>以太网口</td>
+                        <td>2×GE</td>
+                        <td>2×GE</td>
+                        <td>相当</td>
+                    </tr>
+                    <tr>
+                        <td>USB</td>
+                        <td>1×USB 2.0</td>
+                        <td>1×USB 2.0</td>
+                        <td>相当</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </section>
 
-    <!-- 应用场景 -->
-    <section class="scenarios">
-        <div class="scenarios-container">
-            <h2 class="section-title">全场景覆盖</h2>
-            <div class="scenario-grid">
-                <div class="scenario-card">
-                    <div class="scenario-icon">🏦</div>
-                    <h4>金融网点</h4>
-                    <p>高可靠双链路备份<br>合规安全加密传输<br>智能流量调度</p>
+        <div class="comparison-table">
+            <h3>🏭 工业环境适应性</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>对比项</th>
+                        <th>华为 AR502H</th>
+                        <th>思科 IR1101</th>
+                        <th>对比分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>工作温度</td>
+                        <td class="winner">-40°C ~ 70°C</td>
+                        <td>-40°C ~ 60°C</td>
+                        <td>华为高温耐受更好</td>
+                    </tr>
+                    <tr>
+                        <td>防护等级</td>
+                        <td class="winner">IP40</td>
+                        <td>IP30</td>
+                        <td>华为防尘更好</td>
+                    </tr>
+                    <tr>
+                        <td>防护等级详情</td>
+                        <td>无风扇设计，防尘防异物</td>
+                        <td>基本防尘</td>
+                        <td>华为更适合恶劣环境</td>
+                    </tr>
+                    <tr>
+                        <td>供电方式</td>
+                        <td class="winner">9~36V DC 宽压输入</td>
+                        <td>12~24V DC</td>
+                        <td>华为电压范围更宽</td>
+                    </tr>
+                    <tr>
+                        <td>安装方式</td>
+                        <td class="winner">DIN导轨/壁挂/桌面</td>
+                        <td>DIN导轨/壁挂</td>
+                        <td>华为安装方式更多</td>
+                    </tr>
+                    <tr>
+                        <td>抗振动</td>
+                        <td>IEC 60068-2-6 标准</td>
+                        <td>IEC 60068-2-6 标准</td>
+                        <td>相当，均满足工业级</td>
+                    </tr>
+                    <tr>
+                        <td>抗冲击</td>
+                        <td>IEC 60068-2-27 标准</td>
+                        <td>IEC 60068-2-27 标准</td>
+                        <td>相当</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 软件对比 -->
+    <div id="software" class="tab-content">
+        <div class="comparison-table">
+            <h3>💻 操作系统与软件架构</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>对比项</th>
+                        <th>华为 AR502H</th>
+                        <th>思科 IR1101</th>
+                        <th>对比分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="section-header">
+                        <td colspan="4">操作系统</td>
+                    </tr>
+                    <tr>
+                        <td>系统类型</td>
+                        <td class="winner">基于 OpenWrt 的 VRP</td>
+                        <td>Cisco IOS XE</td>
+                        <td>华为开源生态更友好</td>
+                    </tr>
+                    <tr>
+                        <td>容器支持</td>
+                        <td class="winner">Docker + K3s 原生支持</td>
+                        <td>App Hosting（有限）</td>
+                        <td>华为容器化能力更强</td>
+                    </tr>
+                    <tr>
+                        <td>边缘计算</td>
+                        <td class="winner">支持函数计算、流处理</td>
+                        <td>Guest Shell 沙箱</td>
+                        <td>华为边缘计算更完整</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td colspan="4">网络协议</td>
+                    </tr>
+                    <tr>
+                        <td>路由协议</td>
+                        <td>BGP/OSPF/IS-IS/RIP</td>
+                        <td>BGP/OSPF/EIGRP/IS-IS/RIP</td>
+                        <td>思科多 EIGRP，华为标准协议</td>
+                    </tr>
+                    <tr>
+                        <td>VPN支持</td>
+                        <td>IPSec/GRE/L2TP</td>
+                        <td>IPSec/GRE/DMVPN</td>
+                        <td>相当，均支持企业级VPN</td>
+                    </tr>
+                    <tr>
+                        <td>SD-WAN</td>
+                        <td class="winner">内置 SD-WAN 能力</td>
+                        <td>需配合 vManage</td>
+                        <td>华为内置更轻量</td>
+                    </tr>
+                    <tr>
+                        <td>5G协议栈</td>
+                        <td class="winner">5G NR SA/NSA</td>
+                        <td>5G NR SA/NSA</td>
+                        <td>相当</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td colspan="4">工业协议</td>
+                    </tr>
+                    <tr>
+                        <td>Modbus</td>
+                        <td class="winner">网关/主站/从站</td>
+                        <td>需第三方软件</td>
+                        <td>华为原生支持</td>
+                    </tr>
+                    <tr>
+                        <td>OPC UA</td>
+                        <td class="winner">内置 OPC UA Server/Client</td>
+                        <td>不支持</td>
+                        <td>华为工业协议优势</td>
+                    </tr>
+                    <tr>
+                        <td>MQTT</td>
+                        <td class="winner">内置 MQTT Broker/Client</td>
+                        <td>需第三方软件</td>
+                        <td>华为物联网原生支持</td>
+                    </tr>
+                    <tr>
+                        <td>其他协议</td>
+                        <td class="winner">IEC 61850、DNP3、BACnet</td>
+                        <td>有限支持</td>
+                        <td>华为协议支持更全面</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comparison-table">
+            <h3>🔒 安全能力</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>对比项</th>
+                        <th>华为 AR502H</th>
+                        <th>思科 IR1101</th>
+                        <th>对比分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>防火墙</td>
+                        <td>状态检测防火墙</td>
+                        <td class="winner">企业级 Zone-based FW</td>
+                        <td>思科防火墙更成熟</td>
+                    </tr>
+                    <tr>
+                        <td>入侵检测</td>
+                        <td>基础 IDS</td>
+                        <td class="winner">集成 Snort IPS</td>
+                        <td>思科安全能力更强</td>
+                    </tr>
+                    <tr>
+                        <td>加密芯片</td>
+                        <td class="winner">内置国密/SM 系列芯片</td>
+                        <td>标准 AES/3DES</td>
+                        <td>华为国密合规优势</td>
+                    </tr>
+                    <tr>
+                        <td>零信任</td>
+                        <td>支持微分段</td>
+                        <td class="winner">Cisco Zero Trust 生态</td>
+                        <td>思科零信任生态更完善</td>
+                    </tr>
+                    <tr>
+                        <td>可信计算</td>
+                        <td class="winner">TPM 2.0 + 安全启动</td>
+                        <td>Secure Boot</td>
+                        <td>华为硬件信任根更完整</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 性能对比 -->
+    <div id="performance" class="tab-content">
+        <div class="comparison-table">
+            <h3>⚡ 性能指标对比</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>指标</th>
+                        <th>华为 AR502H</th>
+                        <th>思科 IR1101</th>
+                        <th>差异分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NAT 转发性能</td>
+                        <td class="winner">800 Mbps</td>
+                        <td>350 Mbps</td>
+                        <td>华为高 2.3 倍</td>
+                    </tr>
+                    <tr>
+                        <td>IPSec VPN 吞吐量</td>
+                        <td class="winner">200 Mbps</td>
+                        <td>100 Mbps</td>
+                        <td>华为高 2 倍</td>
+                    </tr>
+                    <tr>
+                        <td>并发连接数</td>
+                        <td class="winner">100,000</td>
+                        <td>50,000</td>
+                        <td>华为高 2 倍</td>
+                    </tr>
+                    <tr>
+                        <td>IPSec 隧道数</td>
+                        <td class="winner">1,000</td>
+                        <td>500</td>
+                        <td>华为多 500 条</td>
+                    </tr>
+                    <tr>
+                        <td>5G 下行速率</td>
+                        <td>2.4 Gbps (Sub-6GHz)</td>
+                        <td>2.4 Gbps (Sub-6GHz)</td>
+                        <td>相当</td>
+                    </tr>
+                    <tr>
+                        <td>Wi-Fi 规格</td>
+                        <td class="winner">Wi-Fi 6 (AX1800)</td>
+                        <td>Wi-Fi 5 (AC)</td>
+                        <td>华为领先一代</td>
+                    </tr>
+                    <tr>
+                        <td>功耗</td>
+                        <td class="winner">8W (典型)</td>
+                        <td>12W (典型)</td>
+                        <td>华为节能 33%</td>
+                    </tr>
+                    <tr>
+                        <td>启动时间</td>
+                        <td class="winner">< 30 秒</td>
+                        <td>~ 60 秒</td>
+                        <td>华为启动更快</td>
+                    </tr>
+                    <tr>
+                        <td>MTBF</td>
+                        <td>500,000 小时</td>
+                        <td>500,000 小时</td>
+                        <td>相当</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 优劣势分析 -->
+    <div id="analysis" class="tab-content">
+        <div class="analysis-grid">
+            <div class="analysis-card huawei">
+                <h3>华为 AR502H 优势</h3>
+                <ul class="analysis-list">
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">硬件性能领先</div>
+                            <div class="analysis-desc">Cortex-A53 四核 vs A9 双核，制程更先进，处理能力强 2-3 倍</div>
+                        </div>
+                    </li>
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">工业协议原生支持</div>
+                            <div class="analysis-desc">内置 Modbus/OPC UA/MQTT，无需第三方软件，开箱即用</div>
+                        </div>
+                    </li>
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">边缘计算能力强</div>
+                            <div class="analysis-desc">原生 Docker/K3s 支持，函数计算，适合边缘智能场景</div>
+                        </div>
+                    </li>
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">环境适应性更好</div>
+                            <div class="analysis-desc">-40~70°C 工作温度，IP40 防护，宽压供电 9-36V</div>
+                        </div>
+                    </li>
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">国密合规</div>
+                            <div class="analysis-desc">内置国密芯片，满足国内等保、关基合规要求</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="analysis-card huawei">
+                <h3>华为 AR502H 劣势</h3>
+                <ul class="analysis-list">
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">全球生态相对较弱</div>
+                            <div class="analysis-desc">海外渠道和合作伙伴覆盖不及思科</div>
+                        </div>
+                    </li>
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">企业级安全能力</div>
+                            <div class="analysis-desc">防火墙和 IPS 能力不如思科成熟，生态联动弱</div>
+                        </div>
+                    </li>
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">品牌影响力</div>
+                            <div class="analysis-desc">在欧美等成熟市场品牌认知度不如思科</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="analysis-card cisco">
+                <h3>思科 IR1101 优势</h3>
+                <ul class="analysis-list">
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">企业级安全</div>
+                            <div class="analysis-desc">集成 Snort IPS、Zone-based FW，安全生态完善</div>
+                        </div>
+                    </li>
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">全球服务网络</div>
+                            <div class="analysis-desc">遍布全球的技术支持和服务体系</div>
+                        </div>
+                    </li>
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">企业认证兼容性</div>
+                            <div class="analysis-desc">与现有 Cisco 网络无缝集成，统一管理</div>
+                        </div>
+                    </li>
+                    <li class="advantage">
+                        <span class="analysis-icon">✓</span>
+                        <div>
+                            <div class="analysis-title">零信任生态</div>
+                            <div class="analysis-desc">Cisco Zero Trust 完整解决方案</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="analysis-card cisco">
+                <h3>思科 IR1101 劣势</h3>
+                <ul class="analysis-list">
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">硬件性能落后</div>
+                            <div class="analysis-desc">双核 A9 处理器，处理能力和内存均落后一代</div>
+                        </div>
+                    </li>
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">工业协议支持弱</div>
+                            <div class="analysis-desc">不支持 Modbus/OPC UA 等工业协议原生接入</div>
+                        </div>
+                    </li>
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">边缘计算能力有限</div>
+                            <div class="analysis-desc">容器支持受限，边缘计算场景扩展性差</div>
+                        </div>
+                    </li>
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">环境适应性较差</div>
+                            <div class="analysis-desc">最高工作温度 60°C，IP30 防护等级较低</div>
+                        </div>
+                    </li>
+                    <li class="disadvantage">
+                        <span class="analysis-icon">✗</span>
+                        <div>
+                            <div class="analysis-title">无国密支持</div>
+                            <div class="analysis-desc">不满足国内等保、关基合规要求</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="summary">
+            <h2>📊 选型建议总结</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4>🏭 智能制造场景</h4>
+                    <p>推荐华为 AR502H<br>工业协议原生支持、边缘计算能力强、环境适应性更好</p>
                 </div>
-                <div class="scenario-card">
-                    <div class="scenario-icon">🏪</div>
-                    <h4>连锁零售</h4>
-                    <p>千店统一管控<br>零配置批量部署<br>云化集中运维</p>
+                <div class="summary-item">
+                    <h4>🏢 企业分支场景</h4>
+                    <p>视情况而定<br>已有 Cisco 网络选 IR1101；新建网络/国内项目选 AR502H</p>
                 </div>
-                <div class="scenario-card">
-                    <div class="scenario-icon">🏥</div>
-                    <h4>医疗院所</h4>
-                    <p>医疗设备接入<br>隔离安全域<br>远程诊疗支持</p>
-                </div>
-                <div class="scenario-card">
-                    <div class="scenario-icon">🏫</div>
-                    <h4>教育校园</h4>
-                    <p>师生上网管理<br>带宽公平调度<br>内容过滤审计</p>
-                </div>
-                <div class="scenario-card">
-                    <div class="scenario-icon">🏭</div>
-                    <h4>智能制造</h4>
-                    <p>工业协议转换<br>边缘计算下沉<br>OT/IT 融合</p>
-                </div>
-                <div class="scenario-card">
-                    <div class="scenario-icon">🚗</div>
-                    <h4>车载移动</h4>
-                    <p>5G 高速漫游<br>车载环境抗震<br>GPS 定位追踪</p>
+                <div class="summary-item">
+                    <h4>🔒 高安全场景</h4>
+                    <p>国内选 AR502H（国密合规）<br>海外选 IR1101（安全生态更完善）</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA -->
-    <section class="cta">
-        <h2>开启智能网络新时代</h2>
-        <p>联系华为专家，获取专属方案和优惠报价</p>
-        <a href="#" class="cta-button">立即咨询</a>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="footer">
-        <p>华为 AR 路由器 | 企业网络首选</p>
-        <p>© 2025 Huawei Technologies Co., Ltd. All rights reserved.</p>
-    </footer>
-
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
